@@ -1,4 +1,4 @@
-package com.polidea.flutter_ble_lib.converter;
+package android.src.main.java.com.polidea.flutter_ble_lib.converter;
 
 import com.polidea.multiplatformbleadapter.AdvertisementData;
 import com.polidea.multiplatformbleadapter.ScanResult;

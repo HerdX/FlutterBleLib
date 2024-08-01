@@ -1,4 +1,4 @@
-package com.polidea.flutter_ble_lib.constant;
+package android.src.main.java.com.polidea.flutter_ble_lib.constant;
 
 public interface MethodName {
     String IS_CLIENT_CREATED = "isClientCreated";

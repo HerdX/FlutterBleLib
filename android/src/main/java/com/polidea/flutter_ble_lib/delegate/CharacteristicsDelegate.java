@@ -1,4 +1,4 @@
-package com.polidea.flutter_ble_lib.delegate;
+package android.src.main.java.com.polidea.flutter_ble_lib.delegate;
 
 import android.os.Handler;
 import android.os.Looper;

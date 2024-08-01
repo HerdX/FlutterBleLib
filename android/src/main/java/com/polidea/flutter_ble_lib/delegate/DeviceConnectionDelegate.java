@@ -1,4 +1,4 @@
-package com.polidea.flutter_ble_lib.delegate;
+package android.src.main.java.com.polidea.flutter_ble_lib.delegate;
 
 import com.polidea.flutter_ble_lib.ConnectionStateChange;
 import com.polidea.flutter_ble_lib.SafeMainThreadResolver;
