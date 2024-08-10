@@ -24,10 +24,10 @@ apply plugin: 'com.android.library'
 apply plugin: 'idea'
 
 android {
-    compileSdkVersion 34
+    compileSdkVersion 30
 
     defaultConfig {
-        minSdkVersion 21
+        minSdkVersion 18
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     lintOptions {
