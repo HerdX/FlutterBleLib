@@ -28,6 +28,7 @@ android {
     namespace "com.polidea.flutter_ble_lib"
 
     defaultConfig {
+        applicationId "com.polidea.flutter_ble_lib"
         minSdkVersion 21
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
