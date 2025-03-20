@@ -94,10 +94,6 @@ public class FlutterBleLibPlugin implements MethodCallHandler, FlutterPlugin, Ac
         characteristicMonitorChannel.setStreamHandler(plugin.characteristicsMonitorStreamHandler);
     }
 
-    public static void registerWith(Registrar registrar) {
-        init(registrar.context(), registrar.messenger(), registrar.activity());
-    }
-
     private void setupAdapter(Context context) {
         bleAdapter = BleAdapterFactory.getNewAdapter(context);
         delegates.add(new DeviceConnectionDelegate(bleAdapter, connectionStateStreamHandler));
