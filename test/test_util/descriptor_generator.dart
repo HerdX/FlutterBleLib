@@ -9,10 +9,10 @@ class DescriptorGenerator {
   DescriptorGenerator(this.managerForDescriptor);
 
   Map<String, dynamic> _createRawDescriptor(int seed) => <String, dynamic>{
-        "descriptorId": seed,
-        "descriptorUuid": seed.toString(),
-        "value": base64Encode([seed])
-      };
+    "descriptorId": seed,
+    "descriptorUuid": seed.toString(),
+    "value": base64Encode([seed]),
+  };
 
   DescriptorWithValue create(int seed, Characteristic characteristic) =>
       DescriptorWithValue.fromJson(

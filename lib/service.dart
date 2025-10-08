@@ -42,14 +42,14 @@ class Service extends InternalService {
     Uint8List value,
     bool withResponse, {
     String? transactionId,
-  }) =>
-      _manager.writeCharacteristicForService(
-          peripheral,
-          this,
-          characteristicUuid,
-          value,
-          withResponse,
-          transactionId ?? TransactionIdGenerator.getNextId());
+  }) => _manager.writeCharacteristicForService(
+    peripheral,
+    this,
+    characteristicUuid,
+    value,
+    withResponse,
+    transactionId ?? TransactionIdGenerator.getNextId(),
+  );
 
   /// Reads the value of a [Characteristic] identified by [characteristicUuid].
   ///
@@ -60,13 +60,12 @@ class Service extends InternalService {
   Future<CharacteristicWithValue> readCharacteristic(
     String characteristicUuid, {
     String? transactionId,
-  }) =>
-      _manager.readCharacteristicForService(
-        peripheral,
-        this,
-        characteristicUuid,
-        transactionId ?? TransactionIdGenerator.getNextId(),
-      );
+  }) => _manager.readCharacteristicForService(
+    peripheral,
+    this,
+    characteristicUuid,
+    transactionId ?? TransactionIdGenerator.getNextId(),
+  );
 
   /// Returns a [Stream] of values emitted by a [Characteristic] identified by
   /// [characteristicUuid].
@@ -79,23 +78,18 @@ class Service extends InternalService {
   Stream<CharacteristicWithValue> monitorCharacteristic(
     String characteristicUuid, {
     String? transactionId,
-  }) =>
-      _manager.monitorCharacteristicForService(
-        peripheral,
-        this,
-        characteristicUuid,
-        transactionId ?? TransactionIdGenerator.getNextId(),
-      );
+  }) => _manager.monitorCharacteristicForService(
+    peripheral,
+    this,
+    characteristicUuid,
+    transactionId ?? TransactionIdGenerator.getNextId(),
+  );
 
   /// Returns a list of [Descriptor]s of a [Characteristic] identified by
   /// [characteristicUuid].
   Future<List<Descriptor>> descriptorsForCharacteristic(
     String characteristicUuid,
-  ) =>
-      _manager.descriptorsForService(
-        this,
-        characteristicUuid,
-      );
+  ) => _manager.descriptorsForService(this, characteristicUuid);
 
   /// Reads the value of a [Descriptor] identified by [descriptorUuid] of
   /// a [Characteristic] identified by [characteristicUuid].
@@ -107,13 +101,12 @@ class Service extends InternalService {
     String characteristicUuid,
     String descriptorUuid, {
     String? transactionId,
-  }) =>
-      _manager.readDescriptorForService(
-        this,
-        characteristicUuid,
-        descriptorUuid,
-        transactionId ?? TransactionIdGenerator.getNextId(),
-      );
+  }) => _manager.readDescriptorForService(
+    this,
+    characteristicUuid,
+    descriptorUuid,
+    transactionId ?? TransactionIdGenerator.getNextId(),
+  );
 
   /// Writes the [value] of a [Descriptor] identified by [descriptorUuid]
   /// of a [Characteristic] identified by [characteristicUuid].
@@ -124,14 +117,13 @@ class Service extends InternalService {
     String descriptorUuid,
     Uint8List value, {
     String? transactionId,
-  }) =>
-      _manager.writeDescriptorForService(
-        this,
-        characteristicUuid,
-        descriptorUuid,
-        value,
-        transactionId ?? TransactionIdGenerator.getNextId(),
-      );
+  }) => _manager.writeDescriptorForService(
+    this,
+    characteristicUuid,
+    descriptorUuid,
+    value,
+    transactionId ?? TransactionIdGenerator.getNextId(),
+  );
 
   @override
   bool operator ==(Object other) =>

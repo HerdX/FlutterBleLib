@@ -21,9 +21,9 @@ class Peripheral {
   String identifier;
 
   Peripheral.fromJson(Map<String, dynamic> json, ManagerForPeripheral manager)
-      : _manager = manager,
-        name = json[_PeripheralMetadata.name],
-        identifier = json[_PeripheralMetadata.identifier];
+    : _manager = manager,
+      name = json[_PeripheralMetadata.name],
+      identifier = json[_PeripheralMetadata.identifier];
 
   /// Connects to the peripheral.
   ///
@@ -47,25 +47,31 @@ class Peripheral {
   /// is established right after timeout event, peripheral will be disconnected
   /// immediately. Timeout may happen earlier than specified due to OS
   /// specific behavior.
-  Future<void> connect(
-          {bool isAutoConnect = false,
-          int requestMtu = NO_MTU_NEGOTIATION,
-          bool refreshGatt = false,
-          Duration? timeout}) =>
-      _manager.connectToPeripheral(identifier,
-          isAutoConnect: isAutoConnect,
-          requestMtu: requestMtu,
-          refreshGatt: refreshGatt,
-          timeout: timeout);
+  Future<void> connect({
+    bool isAutoConnect = false,
+    int requestMtu = NO_MTU_NEGOTIATION,
+    bool refreshGatt = false,
+    Duration? timeout,
+  }) => _manager.connectToPeripheral(
+    identifier,
+    isAutoConnect: isAutoConnect,
+    requestMtu: requestMtu,
+    refreshGatt: refreshGatt,
+    timeout: timeout,
+  );
 
   /// Returns a stream of [PeripheralConnectionState].
   ///
   /// By default this stream will never end, but this behaviour can be changed
   /// by setting [completeOnDisconnect] to `true`.
-  Stream<PeripheralConnectionState> observeConnectionState(
-          {bool emitCurrentValue = false, bool completeOnDisconnect = false}) =>
-      _manager.observePeripheralConnectionState(
-          identifier, emitCurrentValue, completeOnDisconnect);
+  Stream<PeripheralConnectionState> observeConnectionState({
+    bool emitCurrentValue = false,
+    bool completeOnDisconnect = false,
+  }) => _manager.observePeripheralConnectionState(
+    identifier,
+    emitCurrentValue,
+    completeOnDisconnect,
+  );
 
   /// Returns whether this peripheral is connected.
   Future<bool> isConnected() => _manager.isPeripheralConnected(identifier);
@@ -81,7 +87,9 @@ class Peripheral {
   /// Optional [transactionId] could be used to cancel operation.
   Future<void> discoverAllServicesAndCharacteristics({String? transactionId}) =>
       _manager.discoverAllServicesAndCharacteristics(
-          this, transactionId ?? TransactionIdGenerator.getNextId());
+        this,
+        transactionId ?? TransactionIdGenerator.getNextId(),
+      );
 
   /// Returns a list of [Service]s of this peripheral.
   ///
@@ -117,7 +125,10 @@ class Peripheral {
   /// If MTU has been requested in [connect()] this method will end with [BleError].
   Future<int> requestMtu(int mtu, {String? transactionId}) =>
       _manager.requestMtu(
-          this, mtu, transactionId ?? TransactionIdGenerator.getNextId());
+        this,
+        mtu,
+        transactionId ?? TransactionIdGenerator.getNextId(),
+      );
 
   /// Reads value of [Characteristic] matching specified UUIDs.
   ///
@@ -129,13 +140,12 @@ class Peripheral {
     String serviceUuid,
     String characteristicUuid, {
     String? transactionId,
-  }) =>
-      _manager.readCharacteristicForDevice(
-        this,
-        serviceUuid,
-        characteristicUuid,
-        transactionId ?? TransactionIdGenerator.getNextId(),
-      );
+  }) => _manager.readCharacteristicForDevice(
+    this,
+    serviceUuid,
+    characteristicUuid,
+    transactionId ?? TransactionIdGenerator.getNextId(),
+  );
 
   /// Writes value of [Characteristic] matching specified UUIDs.
   ///
@@ -149,15 +159,14 @@ class Peripheral {
     Uint8List value,
     bool withResponse, {
     String? transactionId,
-  }) =>
-      _manager.writeCharacteristicForDevice(
-        this,
-        serviceUuid,
-        characteristicUuid,
-        value,
-        withResponse,
-        transactionId ?? TransactionIdGenerator.getNextId(),
-      );
+  }) => _manager.writeCharacteristicForDevice(
+    this,
+    serviceUuid,
+    characteristicUuid,
+    value,
+    withResponse,
+    transactionId ?? TransactionIdGenerator.getNextId(),
+  );
 
   /// Returns a list of [Descriptor]s for [Characteristic] matching specified UUIDs.
   ///
@@ -168,8 +177,7 @@ class Peripheral {
   Future<List<Descriptor>> descriptorsForCharacteristic(
     String serviceUuid,
     String characteristicUuid,
-  ) =>
-      _manager.descriptorsForPeripheral(this, serviceUuid, characteristicUuid);
+  ) => _manager.descriptorsForPeripheral(this, serviceUuid, characteristicUuid);
 
   /// Reads value of [Descriptor] matching specified UUIDs.
   ///
@@ -184,14 +192,13 @@ class Peripheral {
     String characteristicUuid,
     String descriptorUuid, {
     String? transactionId,
-  }) =>
-      _manager.readDescriptorForPeripheral(
-        this,
-        serviceUuid,
-        characteristicUuid,
-        descriptorUuid,
-        transactionId ?? TransactionIdGenerator.getNextId(),
-      );
+  }) => _manager.readDescriptorForPeripheral(
+    this,
+    serviceUuid,
+    characteristicUuid,
+    descriptorUuid,
+    transactionId ?? TransactionIdGenerator.getNextId(),
+  );
 
   /// Writes value of [Descriptor] matching specified UUIDs.
   ///
@@ -206,15 +213,14 @@ class Peripheral {
     String descriptorUuid,
     Uint8List value, {
     String? transactionId,
-  }) =>
-      _manager.writeDescriptorForPeripheral(
-        this,
-        serviceUuid,
-        characteristicUuid,
-        descriptorUuid,
-        value,
-        transactionId ?? TransactionIdGenerator.getNextId(),
-      );
+  }) => _manager.writeDescriptorForPeripheral(
+    this,
+    serviceUuid,
+    characteristicUuid,
+    descriptorUuid,
+    value,
+    transactionId ?? TransactionIdGenerator.getNextId(),
+  );
 
   /// Returns a stream of notifications/indications from [Characteristic]
   /// matching specified UUIDs.
@@ -230,13 +236,12 @@ class Peripheral {
     String serviceUuid,
     String characteristicUuid, {
     String? transactionId,
-  }) =>
-      _manager.monitorCharacteristicForDevice(
-        this,
-        serviceUuid,
-        characteristicUuid,
-        transactionId ?? TransactionIdGenerator.getNextId(),
-      );
+  }) => _manager.monitorCharacteristicForDevice(
+    this,
+    serviceUuid,
+    characteristicUuid,
+    transactionId ?? TransactionIdGenerator.getNextId(),
+  );
 
   @override
   String toString() {
@@ -249,5 +254,5 @@ enum PeripheralConnectionState {
   connecting,
   connected,
   disconnected,
-  disconnecting
+  disconnecting,
 }
