@@ -39,137 +39,192 @@ class MockPeripheral extends _i1.Mock implements _i2.Peripheral {
       (super.noSuchMethod(Invocation.getter(#identifier), returnValue: '')
           as String);
   @override
-  set identifier(String? _identifier) =>
-      super.noSuchMethod(Invocation.setter(#identifier, _identifier),
-          returnValueForMissingStub: null);
+  set identifier(String? _identifier) => super.noSuchMethod(
+    Invocation.setter(#identifier, _identifier),
+    returnValueForMissingStub: null,
+  );
   @override
-  _i4.Future<void> connect(
-          {bool? isAutoConnect = false,
-          int? requestMtu = 0,
-          bool? refreshGatt = false,
-          Duration? timeout}) =>
+  _i4.Future<void> connect({
+    bool? isAutoConnect = false,
+    int? requestMtu = 0,
+    bool? refreshGatt = false,
+    Duration? timeout,
+  }) =>
       (super.noSuchMethod(
-          Invocation.method(#connect, [], {
-            #isAutoConnect: isAutoConnect,
-            #requestMtu: requestMtu,
-            #refreshGatt: refreshGatt,
-            #timeout: timeout
-          }),
-          returnValue: Future.value(null),
-          returnValueForMissingStub: Future.value()) as _i4.Future<void>);
+            Invocation.method(#connect, [], {
+              #isAutoConnect: isAutoConnect,
+              #requestMtu: requestMtu,
+              #refreshGatt: refreshGatt,
+              #timeout: timeout,
+            }),
+            returnValue: Future.value(null),
+            returnValueForMissingStub: Future.value(),
+          )
+          as _i4.Future<void>);
   @override
-  _i4.Stream<_i2.PeripheralConnectionState> observeConnectionState(
-          {bool? emitCurrentValue = false,
-          bool? completeOnDisconnect = false}) =>
+  _i4.Stream<_i2.PeripheralConnectionState> observeConnectionState({
+    bool? emitCurrentValue = false,
+    bool? completeOnDisconnect = false,
+  }) =>
       (super.noSuchMethod(
-              Invocation.method(#observeConnectionState, [], {
-                #emitCurrentValue: emitCurrentValue,
-                #completeOnDisconnect: completeOnDisconnect
-              }),
-              returnValue: Stream<_i2.PeripheralConnectionState>.empty())
+            Invocation.method(#observeConnectionState, [], {
+              #emitCurrentValue: emitCurrentValue,
+              #completeOnDisconnect: completeOnDisconnect,
+            }),
+            returnValue: Stream<_i2.PeripheralConnectionState>.empty(),
+          )
           as _i4.Stream<_i2.PeripheralConnectionState>);
   @override
   _i4.Future<bool> isConnected() =>
-      (super.noSuchMethod(Invocation.method(#isConnected, []),
-          returnValue: Future.value(false)) as _i4.Future<bool>);
+      (super.noSuchMethod(
+            Invocation.method(#isConnected, []),
+            returnValue: Future.value(false),
+          )
+          as _i4.Future<bool>);
   @override
   _i4.Future<void> disconnectOrCancelConnection() =>
-      (super.noSuchMethod(Invocation.method(#disconnectOrCancelConnection, []),
-          returnValue: Future.value(null),
-          returnValueForMissingStub: Future.value()) as _i4.Future<void>);
-  @override
-  _i4.Future<void> discoverAllServicesAndCharacteristics(
-          {String? transactionId}) =>
       (super.noSuchMethod(
-          Invocation.method(#discoverAllServicesAndCharacteristics, [],
-              {#transactionId: transactionId}),
-          returnValue: Future.value(null),
-          returnValueForMissingStub: Future.value()) as _i4.Future<void>);
+            Invocation.method(#disconnectOrCancelConnection, []),
+            returnValue: Future.value(null),
+            returnValueForMissingStub: Future.value(),
+          )
+          as _i4.Future<void>);
+  @override
+  _i4.Future<void> discoverAllServicesAndCharacteristics({
+    String? transactionId,
+  }) =>
+      (super.noSuchMethod(
+            Invocation.method(#discoverAllServicesAndCharacteristics, [], {
+              #transactionId: transactionId,
+            }),
+            returnValue: Future.value(null),
+            returnValueForMissingStub: Future.value(),
+          )
+          as _i4.Future<void>);
   @override
   _i4.Future<List<_i2.Service>> services() =>
-      (super.noSuchMethod(Invocation.method(#services, []),
-              returnValue: Future.value(<_i2.Service>[]))
+      (super.noSuchMethod(
+            Invocation.method(#services, []),
+            returnValue: Future.value(<_i2.Service>[]),
+          )
           as _i4.Future<List<_i2.Service>>);
   @override
   _i4.Future<List<_i2.Characteristic>> characteristics(String? servicedUuid) =>
-      (super.noSuchMethod(Invocation.method(#characteristics, [servicedUuid]),
-              returnValue: Future.value(<_i2.Characteristic>[]))
+      (super.noSuchMethod(
+            Invocation.method(#characteristics, [servicedUuid]),
+            returnValue: Future.value(<_i2.Characteristic>[]),
+          )
           as _i4.Future<List<_i2.Characteristic>>);
   @override
-  _i4.Future<int> rssi({String? transactionId}) => (super.noSuchMethod(
-      Invocation.method(#rssi, [], {#transactionId: transactionId}),
-      returnValue: Future.value(0)) as _i4.Future<int>);
+  _i4.Future<int> rssi({String? transactionId}) =>
+      (super.noSuchMethod(
+            Invocation.method(#rssi, [], {#transactionId: transactionId}),
+            returnValue: Future.value(0),
+          )
+          as _i4.Future<int>);
   @override
   _i4.Future<int> requestMtu(int? mtu, {String? transactionId}) =>
       (super.noSuchMethod(
-          Invocation.method(
-              #requestMtu, [mtu], {#transactionId: transactionId}),
-          returnValue: Future.value(0)) as _i4.Future<int>);
+            Invocation.method(
+              #requestMtu,
+              [mtu],
+              {#transactionId: transactionId},
+            ),
+            returnValue: Future.value(0),
+          )
+          as _i4.Future<int>);
   @override
   _i4.Future<_i2.CharacteristicWithValue> readCharacteristic(
-          String? serviceUuid, String? characteristicUuid,
-          {String? transactionId}) =>
+    String? serviceUuid,
+    String? characteristicUuid, {
+    String? transactionId,
+  }) =>
       (super.noSuchMethod(
-              Invocation.method(
-                  #readCharacteristic,
-                  [serviceUuid, characteristicUuid],
-                  {#transactionId: transactionId}),
-              returnValue: Future.value(_FakeCharacteristicWithValue()))
+            Invocation.method(
+              #readCharacteristic,
+              [serviceUuid, characteristicUuid],
+              {#transactionId: transactionId},
+            ),
+            returnValue: Future.value(_FakeCharacteristicWithValue()),
+          )
           as _i4.Future<_i2.CharacteristicWithValue>);
   @override
-  _i4.Future<_i2.Characteristic> writeCharacteristic(String? serviceUuid,
-          String? characteristicUuid, _i3.Uint8List? value, bool? withResponse,
-          {String? transactionId}) =>
+  _i4.Future<_i2.Characteristic> writeCharacteristic(
+    String? serviceUuid,
+    String? characteristicUuid,
+    _i3.Uint8List? value,
+    bool? withResponse, {
+    String? transactionId,
+  }) =>
       (super.noSuchMethod(
-              Invocation.method(
-                  #writeCharacteristic,
-                  [serviceUuid, characteristicUuid, value, withResponse],
-                  {#transactionId: transactionId}),
-              returnValue: Future.value(_FakeCharacteristic()))
+            Invocation.method(
+              #writeCharacteristic,
+              [serviceUuid, characteristicUuid, value, withResponse],
+              {#transactionId: transactionId},
+            ),
+            returnValue: Future.value(_FakeCharacteristic()),
+          )
           as _i4.Future<_i2.Characteristic>);
   @override
   _i4.Future<List<_i2.Descriptor>> descriptorsForCharacteristic(
-          String? serviceUuid, String? characteristicUuid) =>
+    String? serviceUuid,
+    String? characteristicUuid,
+  ) =>
       (super.noSuchMethod(
-              Invocation.method(#descriptorsForCharacteristic,
-                  [serviceUuid, characteristicUuid]),
-              returnValue: Future.value(<_i2.Descriptor>[]))
+            Invocation.method(#descriptorsForCharacteristic, [
+              serviceUuid,
+              characteristicUuid,
+            ]),
+            returnValue: Future.value(<_i2.Descriptor>[]),
+          )
           as _i4.Future<List<_i2.Descriptor>>);
   @override
-  _i4.Future<_i2.DescriptorWithValue> readDescriptor(String? serviceUuid,
-          String? characteristicUuid, String? descriptorUuid,
-          {String? transactionId}) =>
+  _i4.Future<_i2.DescriptorWithValue> readDescriptor(
+    String? serviceUuid,
+    String? characteristicUuid,
+    String? descriptorUuid, {
+    String? transactionId,
+  }) =>
       (super.noSuchMethod(
-              Invocation.method(
-                  #readDescriptor,
-                  [serviceUuid, characteristicUuid, descriptorUuid],
-                  {#transactionId: transactionId}),
-              returnValue: Future.value(_FakeDescriptorWithValue()))
+            Invocation.method(
+              #readDescriptor,
+              [serviceUuid, characteristicUuid, descriptorUuid],
+              {#transactionId: transactionId},
+            ),
+            returnValue: Future.value(_FakeDescriptorWithValue()),
+          )
           as _i4.Future<_i2.DescriptorWithValue>);
   @override
   _i4.Future<_i2.Descriptor> writeDescriptor(
-          String? serviceUuid,
-          String? characteristicUuid,
-          String? descriptorUuid,
-          _i3.Uint8List? value,
-          {String? transactionId}) =>
+    String? serviceUuid,
+    String? characteristicUuid,
+    String? descriptorUuid,
+    _i3.Uint8List? value, {
+    String? transactionId,
+  }) =>
       (super.noSuchMethod(
-              Invocation.method(
-                  #writeDescriptor,
-                  [serviceUuid, characteristicUuid, descriptorUuid, value],
-                  {#transactionId: transactionId}),
-              returnValue: Future.value(_FakeDescriptor()))
+            Invocation.method(
+              #writeDescriptor,
+              [serviceUuid, characteristicUuid, descriptorUuid, value],
+              {#transactionId: transactionId},
+            ),
+            returnValue: Future.value(_FakeDescriptor()),
+          )
           as _i4.Future<_i2.Descriptor>);
   @override
   _i4.Stream<_i2.CharacteristicWithValue> monitorCharacteristic(
-          String? serviceUuid, String? characteristicUuid,
-          {String? transactionId}) =>
+    String? serviceUuid,
+    String? characteristicUuid, {
+    String? transactionId,
+  }) =>
       (super.noSuchMethod(
-              Invocation.method(
-                  #monitorCharacteristic,
-                  [serviceUuid, characteristicUuid],
-                  {#transactionId: transactionId}),
-              returnValue: Stream<_i2.CharacteristicWithValue>.empty())
+            Invocation.method(
+              #monitorCharacteristic,
+              [serviceUuid, characteristicUuid],
+              {#transactionId: transactionId},
+            ),
+            returnValue: Stream<_i2.CharacteristicWithValue>.empty(),
+          )
           as _i4.Stream<_i2.CharacteristicWithValue>);
   @override
   String toString() =>
@@ -188,20 +243,33 @@ class MockManagerForDescriptor extends _i1.Mock
 
   @override
   _i4.Future<_i3.Uint8List> readDescriptorForIdentifier(
-          _i2.Descriptor? descriptor, String? transactionId) =>
+    _i2.Descriptor? descriptor,
+    String? transactionId,
+  ) =>
       (super.noSuchMethod(
-              Invocation.method(
-                  #readDescriptorForIdentifier, [descriptor, transactionId]),
-              returnValue: Future.value(_FakeUint8List()))
+            Invocation.method(#readDescriptorForIdentifier, [
+              descriptor,
+              transactionId,
+            ]),
+            returnValue: Future.value(_FakeUint8List()),
+          )
           as _i4.Future<_i3.Uint8List>);
   @override
-  _i4.Future<void> writeDescriptorForIdentifier(_i2.Descriptor? descriptor,
-          _i3.Uint8List? value, String? transactionId) =>
+  _i4.Future<void> writeDescriptorForIdentifier(
+    _i2.Descriptor? descriptor,
+    _i3.Uint8List? value,
+    String? transactionId,
+  ) =>
       (super.noSuchMethod(
-          Invocation.method(#writeDescriptorForIdentifier,
-              [descriptor, value, transactionId]),
-          returnValue: Future.value(null),
-          returnValueForMissingStub: Future.value()) as _i4.Future<void>);
+            Invocation.method(#writeDescriptorForIdentifier, [
+              descriptor,
+              value,
+              transactionId,
+            ]),
+            returnValue: Future.value(null),
+            returnValueForMissingStub: Future.value(),
+          )
+          as _i4.Future<void>);
 }
 
 /// A class which mocks [DescriptorWithValue].
@@ -214,16 +282,24 @@ class MockDescriptorWithValue extends _i1.Mock
   }
 
   @override
-  _i3.Uint8List get value => (super.noSuchMethod(Invocation.getter(#value),
-      returnValue: _FakeUint8List()) as _i3.Uint8List);
+  _i3.Uint8List get value =>
+      (super.noSuchMethod(
+            Invocation.getter(#value),
+            returnValue: _FakeUint8List(),
+          )
+          as _i3.Uint8List);
   @override
-  set value(_i3.Uint8List? _value) =>
-      super.noSuchMethod(Invocation.setter(#value, _value),
-          returnValueForMissingStub: null);
+  set value(_i3.Uint8List? _value) => super.noSuchMethod(
+    Invocation.setter(#value, _value),
+    returnValueForMissingStub: null,
+  );
   @override
   _i2.Characteristic get characteristic =>
-      (super.noSuchMethod(Invocation.getter(#characteristic),
-          returnValue: _FakeCharacteristic()) as _i2.Characteristic);
+      (super.noSuchMethod(
+            Invocation.getter(#characteristic),
+            returnValue: _FakeCharacteristic(),
+          )
+          as _i2.Characteristic);
   @override
   String get uuid =>
       (super.noSuchMethod(Invocation.getter(#uuid), returnValue: '') as String);
@@ -233,15 +309,18 @@ class MockDescriptorWithValue extends _i1.Mock
   @override
   _i4.Future<_i3.Uint8List> read({String? transactionId}) =>
       (super.noSuchMethod(
-              Invocation.method(#read, [], {#transactionId: transactionId}),
-              returnValue: Future.value(_FakeUint8List()))
+            Invocation.method(#read, [], {#transactionId: transactionId}),
+            returnValue: Future.value(_FakeUint8List()),
+          )
           as _i4.Future<_i3.Uint8List>);
   @override
   _i4.Future<void> write(_i3.Uint8List? value, {String? transactionId}) =>
       (super.noSuchMethod(
-          Invocation.method(#write, [value], {#transactionId: transactionId}),
-          returnValue: Future.value(null),
-          returnValueForMissingStub: Future.value()) as _i4.Future<void>);
+            Invocation.method(#write, [value], {#transactionId: transactionId}),
+            returnValue: Future.value(null),
+            returnValueForMissingStub: Future.value(),
+          )
+          as _i4.Future<void>);
   @override
   bool operator ==(Object? other) =>
       (super.noSuchMethod(Invocation.method(#==, [other]), returnValue: false)
@@ -254,84 +333,119 @@ class MockDescriptorWithValue extends _i1.Mock
 class MockService extends _i1.Mock implements _i2.Service {
   @override
   _i2.Peripheral get peripheral =>
-      (super.noSuchMethod(Invocation.getter(#peripheral),
-          returnValue: _FakePeripheral()) as _i2.Peripheral);
+      (super.noSuchMethod(
+            Invocation.getter(#peripheral),
+            returnValue: _FakePeripheral(),
+          )
+          as _i2.Peripheral);
   @override
-  set peripheral(_i2.Peripheral? _peripheral) =>
-      super.noSuchMethod(Invocation.setter(#peripheral, _peripheral),
-          returnValueForMissingStub: null);
+  set peripheral(_i2.Peripheral? _peripheral) => super.noSuchMethod(
+    Invocation.setter(#peripheral, _peripheral),
+    returnValueForMissingStub: null,
+  );
   @override
   String get uuid =>
       (super.noSuchMethod(Invocation.getter(#uuid), returnValue: '') as String);
   @override
-  set uuid(String? _uuid) => super.noSuchMethod(Invocation.setter(#uuid, _uuid),
-      returnValueForMissingStub: null);
+  set uuid(String? _uuid) => super.noSuchMethod(
+    Invocation.setter(#uuid, _uuid),
+    returnValueForMissingStub: null,
+  );
   @override
   int get hashCode =>
       (super.noSuchMethod(Invocation.getter(#hashCode), returnValue: 0) as int);
   @override
   _i4.Future<List<_i2.Characteristic>> characteristics() =>
-      (super.noSuchMethod(Invocation.method(#characteristics, []),
-              returnValue: Future.value(<_i2.Characteristic>[]))
+      (super.noSuchMethod(
+            Invocation.method(#characteristics, []),
+            returnValue: Future.value(<_i2.Characteristic>[]),
+          )
           as _i4.Future<List<_i2.Characteristic>>);
   @override
   _i4.Future<_i2.Characteristic> writeCharacteristic(
-          String? characteristicUuid, _i3.Uint8List? value, bool? withResponse,
-          {String? transactionId}) =>
+    String? characteristicUuid,
+    _i3.Uint8List? value,
+    bool? withResponse, {
+    String? transactionId,
+  }) =>
       (super.noSuchMethod(
-              Invocation.method(
-                  #writeCharacteristic,
-                  [characteristicUuid, value, withResponse],
-                  {#transactionId: transactionId}),
-              returnValue: Future.value(_FakeCharacteristic()))
+            Invocation.method(
+              #writeCharacteristic,
+              [characteristicUuid, value, withResponse],
+              {#transactionId: transactionId},
+            ),
+            returnValue: Future.value(_FakeCharacteristic()),
+          )
           as _i4.Future<_i2.Characteristic>);
   @override
   _i4.Future<_i2.CharacteristicWithValue> readCharacteristic(
-          String? characteristicUuid,
-          {String? transactionId}) =>
+    String? characteristicUuid, {
+    String? transactionId,
+  }) =>
       (super.noSuchMethod(
-              Invocation.method(#readCharacteristic, [characteristicUuid],
-                  {#transactionId: transactionId}),
-              returnValue: Future.value(_FakeCharacteristicWithValue()))
+            Invocation.method(
+              #readCharacteristic,
+              [characteristicUuid],
+              {#transactionId: transactionId},
+            ),
+            returnValue: Future.value(_FakeCharacteristicWithValue()),
+          )
           as _i4.Future<_i2.CharacteristicWithValue>);
   @override
   _i4.Stream<_i2.CharacteristicWithValue> monitorCharacteristic(
-          String? characteristicUuid,
-          {String? transactionId}) =>
+    String? characteristicUuid, {
+    String? transactionId,
+  }) =>
       (super.noSuchMethod(
-              Invocation.method(#monitorCharacteristic, [characteristicUuid],
-                  {#transactionId: transactionId}),
-              returnValue: Stream<_i2.CharacteristicWithValue>.empty())
+            Invocation.method(
+              #monitorCharacteristic,
+              [characteristicUuid],
+              {#transactionId: transactionId},
+            ),
+            returnValue: Stream<_i2.CharacteristicWithValue>.empty(),
+          )
           as _i4.Stream<_i2.CharacteristicWithValue>);
   @override
   _i4.Future<List<_i2.Descriptor>> descriptorsForCharacteristic(
-          String? characteristicUuid) =>
+    String? characteristicUuid,
+  ) =>
       (super.noSuchMethod(
-              Invocation.method(
-                  #descriptorsForCharacteristic, [characteristicUuid]),
-              returnValue: Future.value(<_i2.Descriptor>[]))
+            Invocation.method(#descriptorsForCharacteristic, [
+              characteristicUuid,
+            ]),
+            returnValue: Future.value(<_i2.Descriptor>[]),
+          )
           as _i4.Future<List<_i2.Descriptor>>);
   @override
   _i4.Future<_i2.DescriptorWithValue> readDescriptor(
-          String? characteristicUuid, String? descriptorUuid,
-          {String? transactionId}) =>
+    String? characteristicUuid,
+    String? descriptorUuid, {
+    String? transactionId,
+  }) =>
       (super.noSuchMethod(
-              Invocation.method(
-                  #readDescriptor,
-                  [characteristicUuid, descriptorUuid],
-                  {#transactionId: transactionId}),
-              returnValue: Future.value(_FakeDescriptorWithValue()))
+            Invocation.method(
+              #readDescriptor,
+              [characteristicUuid, descriptorUuid],
+              {#transactionId: transactionId},
+            ),
+            returnValue: Future.value(_FakeDescriptorWithValue()),
+          )
           as _i4.Future<_i2.DescriptorWithValue>);
   @override
-  _i4.Future<_i2.Descriptor> writeDescriptor(String? characteristicUuid,
-          String? descriptorUuid, _i3.Uint8List? value,
-          {String? transactionId}) =>
+  _i4.Future<_i2.Descriptor> writeDescriptor(
+    String? characteristicUuid,
+    String? descriptorUuid,
+    _i3.Uint8List? value, {
+    String? transactionId,
+  }) =>
       (super.noSuchMethod(
-              Invocation.method(
-                  #writeDescriptor,
-                  [characteristicUuid, descriptorUuid, value],
-                  {#transactionId: transactionId}),
-              returnValue: Future.value(_FakeDescriptor()))
+            Invocation.method(
+              #writeDescriptor,
+              [characteristicUuid, descriptorUuid, value],
+              {#transactionId: transactionId},
+            ),
+            returnValue: Future.value(_FakeDescriptor()),
+          )
           as _i4.Future<_i2.Descriptor>);
   @override
   bool operator ==(Object? other) =>

@@ -1,28 +1,30 @@
 part of _internal;
 
 mixin BluetoothStateMixin on FlutterBLE {
-  final Stream<dynamic> _adapterStateChanges =
-      const EventChannel(ChannelName.adapterStateChanges)
-          .receiveBroadcastStream();
+  final Stream<dynamic> _adapterStateChanges = const EventChannel(
+    ChannelName.adapterStateChanges,
+  ).receiveBroadcastStream();
 
   Future<void> enableRadio(String transactionId) async {
-    await _methodChannel.invokeMethod(
-      MethodName.enableRadio,
-      <String, dynamic>{
-        ArgumentName.transactionId: transactionId,
-      },
-    ).catchError((errorJson) =>
-        Future.error(BleError.fromJson(jsonDecode(errorJson.details))));
+    await _methodChannel
+        .invokeMethod(MethodName.enableRadio, <String, dynamic>{
+          ArgumentName.transactionId: transactionId,
+        })
+        .catchError(
+          (errorJson) =>
+              Future.error(BleError.fromJson(jsonDecode(errorJson.details))),
+        );
   }
 
   Future<void> disableRadio(String transactionId) async {
-    await _methodChannel.invokeMethod(
-      MethodName.disableRadio,
-      <String, dynamic>{
-        ArgumentName.transactionId: transactionId,
-      },
-    ).catchError((errorJson) =>
-        Future.error(BleError.fromJson(jsonDecode(errorJson.details))));
+    await _methodChannel
+        .invokeMethod(MethodName.disableRadio, <String, dynamic>{
+          ArgumentName.transactionId: transactionId,
+        })
+        .catchError(
+          (errorJson) =>
+              Future.error(BleError.fromJson(jsonDecode(errorJson.details))),
+        );
   }
 
   Future<BluetoothState> state() => _methodChannel

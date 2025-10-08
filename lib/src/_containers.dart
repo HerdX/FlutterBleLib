@@ -8,8 +8,7 @@ class ConnectionStateContainer {
   String connectionState;
 
   ConnectionStateContainer.fromJson(Map<String, dynamic> json)
-      : peripheralIdentifier =
-            json[_ConnectionStateContainerMetadata.peripheralIdentifier],
-        connectionState =
-            json[_ConnectionStateContainerMetadata.connectionState];
+    : peripheralIdentifier =
+          json[_ConnectionStateContainerMetadata.peripheralIdentifier],
+      connectionState = json[_ConnectionStateContainerMetadata.connectionState];
 }

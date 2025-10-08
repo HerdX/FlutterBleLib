@@ -27,63 +27,93 @@ class MockManagerForCharacteristic extends _i1.Mock
     implements _i4.ManagerForCharacteristic {
   @override
   _i5.Future<_i2.Uint8List> readCharacteristicForIdentifier(
-          _i3.Peripheral? peripheral,
-          _i6.InternalCharacteristic? characteristic,
-          String? transactionId) =>
+    _i3.Peripheral? peripheral,
+    _i6.InternalCharacteristic? characteristic,
+    String? transactionId,
+  ) =>
       (super.noSuchMethod(
-              Invocation.method(#readCharacteristicForIdentifier,
-                  [peripheral, characteristic, transactionId]),
-              returnValue: Future.value(_FakeUint8List()))
+            Invocation.method(#readCharacteristicForIdentifier, [
+              peripheral,
+              characteristic,
+              transactionId,
+            ]),
+            returnValue: Future.value(_FakeUint8List()),
+          )
           as _i5.Future<_i2.Uint8List>);
   @override
   _i5.Future<void> writeCharacteristicForIdentifier(
-          _i3.Peripheral? peripheral,
-          _i6.InternalCharacteristic? characteristic,
-          _i2.Uint8List? value,
-          bool? withResponse,
-          String? transactionId) =>
+    _i3.Peripheral? peripheral,
+    _i6.InternalCharacteristic? characteristic,
+    _i2.Uint8List? value,
+    bool? withResponse,
+    String? transactionId,
+  ) =>
       (super.noSuchMethod(
-          Invocation.method(#writeCharacteristicForIdentifier,
-              [peripheral, characteristic, value, withResponse, transactionId]),
-          returnValue: Future.value(null),
-          returnValueForMissingStub: Future.value()) as _i5.Future<void>);
+            Invocation.method(#writeCharacteristicForIdentifier, [
+              peripheral,
+              characteristic,
+              value,
+              withResponse,
+              transactionId,
+            ]),
+            returnValue: Future.value(null),
+            returnValueForMissingStub: Future.value(),
+          )
+          as _i5.Future<void>);
   @override
   _i5.Stream<_i2.Uint8List> monitorCharacteristicForIdentifier(
-          _i3.Peripheral? peripheral,
-          _i6.InternalCharacteristic? characteristic,
-          String? transactionId) =>
+    _i3.Peripheral? peripheral,
+    _i6.InternalCharacteristic? characteristic,
+    String? transactionId,
+  ) =>
       (super.noSuchMethod(
-              Invocation.method(#monitorCharacteristicForIdentifier,
-                  [peripheral, characteristic, transactionId]),
-              returnValue: Stream<_i2.Uint8List>.empty())
+            Invocation.method(#monitorCharacteristicForIdentifier, [
+              peripheral,
+              characteristic,
+              transactionId,
+            ]),
+            returnValue: Stream<_i2.Uint8List>.empty(),
+          )
           as _i5.Stream<_i2.Uint8List>);
   @override
   _i5.Future<List<_i3.Descriptor>> descriptorsForCharacteristic(
-          _i3.Characteristic? characteristic) =>
+    _i3.Characteristic? characteristic,
+  ) =>
       (super.noSuchMethod(
-          Invocation.method(#descriptorsForCharacteristic, [characteristic]),
-          returnValue:
-              Future.value(<_i3.Descriptor>[])) as _i5
-          .Future<List<_i3.Descriptor>>);
+            Invocation.method(#descriptorsForCharacteristic, [characteristic]),
+            returnValue: Future.value(<_i3.Descriptor>[]),
+          )
+          as _i5.Future<List<_i3.Descriptor>>);
   @override
   _i5.Future<_i3.DescriptorWithValue> readDescriptorForCharacteristic(
-          _i3.Characteristic? characteristic,
-          String? descriptorUuid,
-          String? transactionId) =>
+    _i3.Characteristic? characteristic,
+    String? descriptorUuid,
+    String? transactionId,
+  ) =>
       (super.noSuchMethod(
-              Invocation.method(#readDescriptorForCharacteristic,
-                  [characteristic, descriptorUuid, transactionId]),
-              returnValue: Future.value(_FakeDescriptorWithValue()))
+            Invocation.method(#readDescriptorForCharacteristic, [
+              characteristic,
+              descriptorUuid,
+              transactionId,
+            ]),
+            returnValue: Future.value(_FakeDescriptorWithValue()),
+          )
           as _i5.Future<_i3.DescriptorWithValue>);
   @override
   _i5.Future<_i3.Descriptor> writeDescriptorForCharacteristic(
-          _i3.Characteristic? characteristic,
-          String? descriptorUuid,
-          _i2.Uint8List? value,
-          String? transactionId) =>
+    _i3.Characteristic? characteristic,
+    String? descriptorUuid,
+    _i2.Uint8List? value,
+    String? transactionId,
+  ) =>
       (super.noSuchMethod(
-              Invocation.method(#writeDescriptorForCharacteristic,
-                  [characteristic, descriptorUuid, value, transactionId]),
-              returnValue: Future.value(_FakeDescriptor()))
+            Invocation.method(#writeDescriptorForCharacteristic, [
+              characteristic,
+              descriptorUuid,
+              value,
+              transactionId,
+            ]),
+            returnValue: Future.value(_FakeDescriptor()),
+          )
           as _i5.Future<_i3.Descriptor>);
 }

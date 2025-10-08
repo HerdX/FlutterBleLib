@@ -1,87 +1,89 @@
 part of _internal;
 
 mixin CharacteristicsMixin on FlutterBLE {
-  final Stream<dynamic> _characteristicsMonitoringEvents =
-      const EventChannel(ChannelName.monitorCharacteristic)
-          .receiveBroadcastStream();
+  final Stream<dynamic> _characteristicsMonitoringEvents = const EventChannel(
+    ChannelName.monitorCharacteristic,
+  ).receiveBroadcastStream();
 
   Future<Uint8List> readCharacteristicForIdentifier(
     Peripheral peripheral,
     int characteristicIdentifier,
     String transactionId,
-  ) =>
-      _methodChannel
-          .invokeMethod(
-            MethodName.readCharacteristicForIdentifier,
-            <String, dynamic>{
-              ArgumentName.characteristicIdentifier: characteristicIdentifier,
-              ArgumentName.transactionId: transactionId
-            },
-          )
-          .catchError((errorJson) =>
-              Future.error(BleError.fromJson(jsonDecode(errorJson.details))))
-          .then((rawValue) {
-            String rawJsonValue = "";
-            if (rawValue is String) {
-              rawJsonValue = rawValue;
-            }
-            return _parseCharacteristicWithValueWithTransactionIdResponse(
-                    peripheral, rawJsonValue)
-                .value;
-          });
+  ) => _methodChannel
+      .invokeMethod(
+        MethodName.readCharacteristicForIdentifier,
+        <String, dynamic>{
+          ArgumentName.characteristicIdentifier: characteristicIdentifier,
+          ArgumentName.transactionId: transactionId,
+        },
+      )
+      .catchError(
+        (errorJson) =>
+            Future.error(BleError.fromJson(jsonDecode(errorJson.details))),
+      )
+      .then((rawValue) {
+        String rawJsonValue = "";
+        if (rawValue is String) {
+          rawJsonValue = rawValue;
+        }
+        return _parseCharacteristicWithValueWithTransactionIdResponse(
+          peripheral,
+          rawJsonValue,
+        ).value;
+      });
 
   Future<CharacteristicWithValue> readCharacteristicForDevice(
     Peripheral peripheral,
     String serviceUuid,
     String characteristicUuid,
     String transactionId,
-  ) =>
-      _methodChannel
-          .invokeMethod(
-            MethodName.readCharacteristicForDevice,
-            <String, dynamic>{
-              ArgumentName.deviceIdentifier: peripheral.identifier,
-              ArgumentName.serviceUuid: serviceUuid,
-              ArgumentName.characteristicUuid: characteristicUuid,
-              ArgumentName.transactionId: transactionId
-            },
-          )
-          .catchError((errorJson) =>
-              Future.error(BleError.fromJson(jsonDecode(errorJson.details))))
-          .then((rawValue) {
-            String rawJsonValue = "";
-            if (rawValue is String) {
-              rawJsonValue = rawValue;
-            }
-            return _parseCharacteristicWithValueWithTransactionIdResponse(
-                peripheral, rawJsonValue);
-          });
+  ) => _methodChannel
+      .invokeMethod(MethodName.readCharacteristicForDevice, <String, dynamic>{
+        ArgumentName.deviceIdentifier: peripheral.identifier,
+        ArgumentName.serviceUuid: serviceUuid,
+        ArgumentName.characteristicUuid: characteristicUuid,
+        ArgumentName.transactionId: transactionId,
+      })
+      .catchError(
+        (errorJson) =>
+            Future.error(BleError.fromJson(jsonDecode(errorJson.details))),
+      )
+      .then((rawValue) {
+        String rawJsonValue = "";
+        if (rawValue is String) {
+          rawJsonValue = rawValue;
+        }
+        return _parseCharacteristicWithValueWithTransactionIdResponse(
+          peripheral,
+          rawJsonValue,
+        );
+      });
 
   Future<CharacteristicWithValue> readCharacteristicForService(
     Peripheral peripheral,
     int serviceIdentifier,
     String characteristicUuid,
     String transactionId,
-  ) =>
-      _methodChannel
-          .invokeMethod(
-            MethodName.readCharacteristicForService,
-            <String, dynamic>{
-              ArgumentName.serviceIdentifier: serviceIdentifier,
-              ArgumentName.characteristicUuid: characteristicUuid,
-              ArgumentName.transactionId: transactionId
-            },
-          )
-          .catchError((errorJson) =>
-              Future.error(BleError.fromJson(jsonDecode(errorJson.details))))
-          .then((rawValue) {
-            String rawJsonValue = "";
-            if (rawValue is String) {
-              rawJsonValue = rawValue;
-            }
-            return _parseCharacteristicWithValueWithTransactionIdResponse(
-                peripheral, rawJsonValue);
-          });
+  ) => _methodChannel
+      .invokeMethod(MethodName.readCharacteristicForService, <String, dynamic>{
+        ArgumentName.serviceIdentifier: serviceIdentifier,
+        ArgumentName.characteristicUuid: characteristicUuid,
+        ArgumentName.transactionId: transactionId,
+      })
+      .catchError(
+        (errorJson) =>
+            Future.error(BleError.fromJson(jsonDecode(errorJson.details))),
+      )
+      .then((rawValue) {
+        String rawJsonValue = "";
+        if (rawValue is String) {
+          rawJsonValue = rawValue;
+        }
+        return _parseCharacteristicWithValueWithTransactionIdResponse(
+          peripheral,
+          rawJsonValue,
+        );
+      });
 
   Future<void> writeCharacteristicForIdentifier(
     Peripheral peripheral,
@@ -89,8 +91,8 @@ mixin CharacteristicsMixin on FlutterBLE {
     Uint8List value,
     bool withResponse,
     String transactionId,
-  ) =>
-      _methodChannel.invokeMethod(
+  ) => _methodChannel
+      .invokeMethod(
         MethodName.writeCharacteristicForIdentifier,
         <String, dynamic>{
           ArgumentName.characteristicIdentifier: characteristicIdentifier,
@@ -98,34 +100,36 @@ mixin CharacteristicsMixin on FlutterBLE {
           ArgumentName.withResponse: withResponse,
           ArgumentName.transactionId: transactionId,
         },
-      ).catchError((errorJson) =>
-          Future.error(BleError.fromJson(jsonDecode(errorJson.details))));
+      )
+      .catchError(
+        (errorJson) =>
+            Future.error(BleError.fromJson(jsonDecode(errorJson.details))),
+      );
 
   Future<Characteristic> writeCharacteristicForDevice(
-          Peripheral peripheral,
-          String serviceUuid,
-          String characteristicUuid,
-          Uint8List value,
-          bool withResponse,
-          String transactionId) =>
-      _methodChannel
-          .invokeMethod(
-            MethodName.writeCharacteristicForDevice,
-            <String, dynamic>{
-              ArgumentName.deviceIdentifier: peripheral.identifier,
-              ArgumentName.serviceUuid: serviceUuid,
-              ArgumentName.characteristicUuid: characteristicUuid,
-              ArgumentName.value: value,
-              ArgumentName.withResponse: withResponse,
-              ArgumentName.transactionId: transactionId,
-            },
-          )
-          .catchError((errorJson) =>
-              Future.error(BleError.fromJson(jsonDecode(errorJson.details))))
-          .then(
-            (rawJsonValue) =>
-                _parseCharacteristicResponse(peripheral, rawJsonValue),
-          );
+    Peripheral peripheral,
+    String serviceUuid,
+    String characteristicUuid,
+    Uint8List value,
+    bool withResponse,
+    String transactionId,
+  ) => _methodChannel
+      .invokeMethod(MethodName.writeCharacteristicForDevice, <String, dynamic>{
+        ArgumentName.deviceIdentifier: peripheral.identifier,
+        ArgumentName.serviceUuid: serviceUuid,
+        ArgumentName.characteristicUuid: characteristicUuid,
+        ArgumentName.value: value,
+        ArgumentName.withResponse: withResponse,
+        ArgumentName.transactionId: transactionId,
+      })
+      .catchError(
+        (errorJson) =>
+            Future.error(BleError.fromJson(jsonDecode(errorJson.details))),
+      )
+      .then(
+        (rawJsonValue) =>
+            _parseCharacteristicResponse(peripheral, rawJsonValue),
+      );
 
   Future<Characteristic> writeCharacteristicForService(
     Peripheral peripheral,
@@ -134,24 +138,22 @@ mixin CharacteristicsMixin on FlutterBLE {
     Uint8List value,
     bool withResponse,
     String transactionId,
-  ) =>
-      _methodChannel
-          .invokeMethod(
-            MethodName.writeCharacteristicForService,
-            <String, dynamic>{
-              ArgumentName.serviceIdentifier: serviceIdentifier,
-              ArgumentName.characteristicUuid: characteristicUuid,
-              ArgumentName.value: value,
-              ArgumentName.withResponse: withResponse,
-              ArgumentName.transactionId: transactionId,
-            },
-          )
-          .catchError((errorJson) =>
-              Future.error(BleError.fromJson(jsonDecode(errorJson.details))))
-          .then(
-            (rawJsonValue) =>
-                _parseCharacteristicResponse(peripheral, rawJsonValue),
-          );
+  ) => _methodChannel
+      .invokeMethod(MethodName.writeCharacteristicForService, <String, dynamic>{
+        ArgumentName.serviceIdentifier: serviceIdentifier,
+        ArgumentName.characteristicUuid: characteristicUuid,
+        ArgumentName.value: value,
+        ArgumentName.withResponse: withResponse,
+        ArgumentName.transactionId: transactionId,
+      })
+      .catchError(
+        (errorJson) =>
+            Future.error(BleError.fromJson(jsonDecode(errorJson.details))),
+      )
+      .then(
+        (rawJsonValue) =>
+            _parseCharacteristicResponse(peripheral, rawJsonValue),
+      );
 
   Stream<Uint8List> monitorCharacteristicForIdentifier(
     Peripheral peripheral,
@@ -159,12 +161,12 @@ mixin CharacteristicsMixin on FlutterBLE {
     String transactionId,
   ) {
     void Function() startMonitoring = () => _methodChannel.invokeMethod(
-          MethodName.monitorCharacteristicForIdentifier,
-          <String, dynamic>{
-            ArgumentName.characteristicIdentifier: characteristicIdentifier,
-            ArgumentName.transactionId: transactionId,
-          },
-        );
+      MethodName.monitorCharacteristicForIdentifier,
+      <String, dynamic>{
+        ArgumentName.characteristicIdentifier: characteristicIdentifier,
+        ArgumentName.transactionId: transactionId,
+      },
+    );
 
     bool characteristicFilter(
       CharacteristicWithValueAndTransactionId characteristic,
@@ -195,21 +197,23 @@ mixin CharacteristicsMixin on FlutterBLE {
     String transactionId,
   ) {
     void Function() startMonitoring = () => _methodChannel.invokeMethod(
-          MethodName.monitorCharacteristicForDevice,
-          <String, dynamic>{
-            ArgumentName.deviceIdentifier: peripheral.identifier,
-            ArgumentName.serviceUuid: serviceUuid,
-            ArgumentName.characteristicUuid: characteristicUuid,
-            ArgumentName.transactionId: transactionId,
-          },
-        );
+      MethodName.monitorCharacteristicForDevice,
+      <String, dynamic>{
+        ArgumentName.deviceIdentifier: peripheral.identifier,
+        ArgumentName.serviceUuid: serviceUuid,
+        ArgumentName.characteristicUuid: characteristicUuid,
+        ArgumentName.transactionId: transactionId,
+      },
+    );
 
     bool Function(CharacteristicWithValueAndTransactionId)
-        characteristicsFilter = (characteristic) =>
-            equalsIgnoreAsciiCase(characteristicUuid, characteristic.uuid) &&
-            equalsIgnoreAsciiCase(serviceUuid, characteristic.service.uuid) &&
-            equalsIgnoreAsciiCase(
-                transactionId, characteristic._transactionId ?? "");
+    characteristicsFilter = (characteristic) =>
+        equalsIgnoreAsciiCase(characteristicUuid, characteristic.uuid) &&
+        equalsIgnoreAsciiCase(serviceUuid, characteristic.service.uuid) &&
+        equalsIgnoreAsciiCase(
+          transactionId,
+          characteristic._transactionId ?? "",
+        );
 
     return _createMonitoringStream(
       startMonitoring,
@@ -226,20 +230,22 @@ mixin CharacteristicsMixin on FlutterBLE {
     String transactionId,
   ) {
     void Function() startMonitoring = () => _methodChannel.invokeMethod(
-          MethodName.monitorCharacteristicForService,
-          <String, dynamic>{
-            ArgumentName.serviceIdentifier: serviceIdentifier,
-            ArgumentName.characteristicUuid: characteristicUuid,
-            ArgumentName.transactionId: transactionId,
-          },
-        );
+      MethodName.monitorCharacteristicForService,
+      <String, dynamic>{
+        ArgumentName.serviceIdentifier: serviceIdentifier,
+        ArgumentName.characteristicUuid: characteristicUuid,
+        ArgumentName.transactionId: transactionId,
+      },
+    );
 
     bool Function(CharacteristicWithValueAndTransactionId)
-        characteristicFilter = (characteristic) =>
-            equalsIgnoreAsciiCase(characteristicUuid, characteristic.uuid) &&
-            serviceIdentifier == characteristic.service._id &&
-            equalsIgnoreAsciiCase(
-                transactionId, characteristic._transactionId ?? "");
+    characteristicFilter = (characteristic) =>
+        equalsIgnoreAsciiCase(characteristicUuid, characteristic.uuid) &&
+        serviceIdentifier == characteristic.service._id &&
+        equalsIgnoreAsciiCase(
+          transactionId,
+          characteristic._transactionId ?? "",
+        );
 
     return _createMonitoringStream(
       startMonitoring,
@@ -263,19 +269,26 @@ mixin CharacteristicsMixin on FlutterBLE {
                 rawJsonValue = rawValue;
               }
               return _parseCharacteristicWithValueWithTransactionIdResponse(
-                  peripheral, rawJsonValue);
+                peripheral,
+                rawJsonValue,
+              );
             })
             .where(filter)
-            .handleError((errorJson) =>
-                _throwErrorIfMatchesWithTransactionId(errorJson, transactionId))
+            .handleError(
+              (errorJson) => _throwErrorIfMatchesWithTransactionId(
+                errorJson,
+                transactionId,
+              ),
+            )
             .transform<CharacteristicWithValueAndTransactionId>(
-                CancelOnErrorStreamTransformer());
+              CancelOnErrorStreamTransformer(),
+            );
 
     StreamController<CharacteristicWithValueAndTransactionId> streamController =
         StreamController.broadcast(
-      onListen: onListen,
-      onCancel: () => cancelTransaction(transactionId),
-    );
+          onListen: onListen,
+          onCancel: () => cancelTransaction(transactionId),
+        );
 
     streamController
         .addStream(stream, cancelOnError: true)
@@ -285,28 +298,39 @@ mixin CharacteristicsMixin on FlutterBLE {
   }
 
   CharacteristicWithValueAndTransactionId
-      _parseCharacteristicWithValueWithTransactionIdResponse(
-          Peripheral peripheral, String rawJsonValue) {
+  _parseCharacteristicWithValueWithTransactionIdResponse(
+    Peripheral peripheral,
+    String rawJsonValue,
+  ) {
     Map<String, dynamic> rootObject = jsonDecode(rawJsonValue);
     Service service = Service.fromJson(rootObject, peripheral, _manager);
 
     var transactionId = rootObject["transactionId"];
     return CharacteristicWithValueAndTransactionId.fromJson(
-            rootObject["characteristic"], service, _manager)
-        .setTransactionId(transactionId);
+      rootObject["characteristic"],
+      service,
+      _manager,
+    ).setTransactionId(transactionId);
   }
 
   Characteristic _parseCharacteristicResponse(
-      Peripheral peripheral, rawJsonValue) {
+    Peripheral peripheral,
+    rawJsonValue,
+  ) {
     Map<String, dynamic> rootObject = jsonDecode(rawJsonValue);
     Service service = Service.fromJson(rootObject, peripheral, _manager);
 
     return Characteristic.fromJson(
-        rootObject["characteristic"], service, _manager);
+      rootObject["characteristic"],
+      service,
+      _manager,
+    );
   }
 
   void _throwErrorIfMatchesWithTransactionId(
-      PlatformException errorJson, String transactionId) {
+    PlatformException errorJson,
+    String transactionId,
+  ) {
     final errorDetails = jsonDecode(errorJson.details);
     if (transactionId != errorDetails["transactionId"]) {
       return;

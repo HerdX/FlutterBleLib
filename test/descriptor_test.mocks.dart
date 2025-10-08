@@ -32,20 +32,33 @@ class MockManagerForDescriptor extends _i1.Mock
 
   @override
   _i5.Future<_i2.Uint8List> readDescriptorForIdentifier(
-          _i3.Descriptor? descriptor, String? transactionId) =>
+    _i3.Descriptor? descriptor,
+    String? transactionId,
+  ) =>
       (super.noSuchMethod(
-              Invocation.method(
-                  #readDescriptorForIdentifier, [descriptor, transactionId]),
-              returnValue: Future.value(_FakeUint8List()))
+            Invocation.method(#readDescriptorForIdentifier, [
+              descriptor,
+              transactionId,
+            ]),
+            returnValue: Future.value(_FakeUint8List()),
+          )
           as _i5.Future<_i2.Uint8List>);
   @override
-  _i5.Future<void> writeDescriptorForIdentifier(_i3.Descriptor? descriptor,
-          _i2.Uint8List? value, String? transactionId) =>
+  _i5.Future<void> writeDescriptorForIdentifier(
+    _i3.Descriptor? descriptor,
+    _i2.Uint8List? value,
+    String? transactionId,
+  ) =>
       (super.noSuchMethod(
-          Invocation.method(#writeDescriptorForIdentifier,
-              [descriptor, value, transactionId]),
-          returnValue: Future.value(null),
-          returnValueForMissingStub: Future.value()) as _i5.Future<void>);
+            Invocation.method(#writeDescriptorForIdentifier, [
+              descriptor,
+              value,
+              transactionId,
+            ]),
+            returnValue: Future.value(null),
+            returnValueForMissingStub: Future.value(),
+          )
+          as _i5.Future<void>);
 }
 
 /// A class which mocks [Characteristic].
@@ -57,105 +70,149 @@ class MockCharacteristic extends _i1.Mock implements _i3.Characteristic {
   }
 
   @override
-  _i3.Service get service => (super.noSuchMethod(Invocation.getter(#service),
-      returnValue: _FakeService()) as _i3.Service);
+  _i3.Service get service =>
+      (super.noSuchMethod(
+            Invocation.getter(#service),
+            returnValue: _FakeService(),
+          )
+          as _i3.Service);
   @override
-  set service(_i3.Service? _service) =>
-      super.noSuchMethod(Invocation.setter(#service, _service),
-          returnValueForMissingStub: null);
+  set service(_i3.Service? _service) => super.noSuchMethod(
+    Invocation.setter(#service, _service),
+    returnValueForMissingStub: null,
+  );
   @override
   String get uuid =>
       (super.noSuchMethod(Invocation.getter(#uuid), returnValue: '') as String);
   @override
-  set uuid(String? _uuid) => super.noSuchMethod(Invocation.setter(#uuid, _uuid),
-      returnValueForMissingStub: null);
+  set uuid(String? _uuid) => super.noSuchMethod(
+    Invocation.setter(#uuid, _uuid),
+    returnValueForMissingStub: null,
+  );
   @override
   bool get isReadable =>
       (super.noSuchMethod(Invocation.getter(#isReadable), returnValue: false)
           as bool);
   @override
-  set isReadable(bool? _isReadable) =>
-      super.noSuchMethod(Invocation.setter(#isReadable, _isReadable),
-          returnValueForMissingStub: null);
+  set isReadable(bool? _isReadable) => super.noSuchMethod(
+    Invocation.setter(#isReadable, _isReadable),
+    returnValueForMissingStub: null,
+  );
   @override
   bool get isWritableWithResponse =>
-      (super.noSuchMethod(Invocation.getter(#isWritableWithResponse),
-          returnValue: false) as bool);
+      (super.noSuchMethod(
+            Invocation.getter(#isWritableWithResponse),
+            returnValue: false,
+          )
+          as bool);
   @override
   set isWritableWithResponse(bool? _isWritableWithResponse) =>
       super.noSuchMethod(
-          Invocation.setter(#isWritableWithResponse, _isWritableWithResponse),
-          returnValueForMissingStub: null);
+        Invocation.setter(#isWritableWithResponse, _isWritableWithResponse),
+        returnValueForMissingStub: null,
+      );
   @override
   bool get isWritableWithoutResponse =>
-      (super.noSuchMethod(Invocation.getter(#isWritableWithoutResponse),
-          returnValue: false) as bool);
+      (super.noSuchMethod(
+            Invocation.getter(#isWritableWithoutResponse),
+            returnValue: false,
+          )
+          as bool);
   @override
   set isWritableWithoutResponse(bool? _isWritableWithoutResponse) =>
       super.noSuchMethod(
-          Invocation.setter(
-              #isWritableWithoutResponse, _isWritableWithoutResponse),
-          returnValueForMissingStub: null);
+        Invocation.setter(
+          #isWritableWithoutResponse,
+          _isWritableWithoutResponse,
+        ),
+        returnValueForMissingStub: null,
+      );
   @override
   bool get isNotifiable =>
       (super.noSuchMethod(Invocation.getter(#isNotifiable), returnValue: false)
           as bool);
   @override
-  set isNotifiable(bool? _isNotifiable) =>
-      super.noSuchMethod(Invocation.setter(#isNotifiable, _isNotifiable),
-          returnValueForMissingStub: null);
+  set isNotifiable(bool? _isNotifiable) => super.noSuchMethod(
+    Invocation.setter(#isNotifiable, _isNotifiable),
+    returnValueForMissingStub: null,
+  );
   @override
   bool get isIndicatable =>
       (super.noSuchMethod(Invocation.getter(#isIndicatable), returnValue: false)
           as bool);
   @override
-  set isIndicatable(bool? _isIndicatable) =>
-      super.noSuchMethod(Invocation.setter(#isIndicatable, _isIndicatable),
-          returnValueForMissingStub: null);
+  set isIndicatable(bool? _isIndicatable) => super.noSuchMethod(
+    Invocation.setter(#isIndicatable, _isIndicatable),
+    returnValueForMissingStub: null,
+  );
   @override
   int get hashCode =>
       (super.noSuchMethod(Invocation.getter(#hashCode), returnValue: 0) as int);
   @override
   _i5.Future<_i2.Uint8List> read({String? transactionId}) =>
       (super.noSuchMethod(
-              Invocation.method(#read, [], {#transactionId: transactionId}),
-              returnValue: Future.value(_FakeUint8List()))
+            Invocation.method(#read, [], {#transactionId: transactionId}),
+            returnValue: Future.value(_FakeUint8List()),
+          )
           as _i5.Future<_i2.Uint8List>);
   @override
-  _i5.Future<void> write(_i2.Uint8List? value, bool? withResponse,
-          {String? transactionId}) =>
+  _i5.Future<void> write(
+    _i2.Uint8List? value,
+    bool? withResponse, {
+    String? transactionId,
+  }) =>
       (super.noSuchMethod(
-          Invocation.method(
-              #write, [value, withResponse], {#transactionId: transactionId}),
-          returnValue: Future.value(null),
-          returnValueForMissingStub: Future.value()) as _i5.Future<void>);
+            Invocation.method(
+              #write,
+              [value, withResponse],
+              {#transactionId: transactionId},
+            ),
+            returnValue: Future.value(null),
+            returnValueForMissingStub: Future.value(),
+          )
+          as _i5.Future<void>);
   @override
-  _i5.Stream<_i2.Uint8List> monitor({String? transactionId}) => (super
-          .noSuchMethod(
-              Invocation.method(#monitor, [], {#transactionId: transactionId}),
-              returnValue: Stream<_i2.Uint8List>.empty())
-      as _i5.Stream<_i2.Uint8List>);
+  _i5.Stream<_i2.Uint8List> monitor({String? transactionId}) =>
+      (super.noSuchMethod(
+            Invocation.method(#monitor, [], {#transactionId: transactionId}),
+            returnValue: Stream<_i2.Uint8List>.empty(),
+          )
+          as _i5.Stream<_i2.Uint8List>);
   @override
   _i5.Future<List<_i3.Descriptor>> descriptors() =>
-      (super.noSuchMethod(Invocation.method(#descriptors, []),
-              returnValue: Future.value(<_i3.Descriptor>[]))
+      (super.noSuchMethod(
+            Invocation.method(#descriptors, []),
+            returnValue: Future.value(<_i3.Descriptor>[]),
+          )
           as _i5.Future<List<_i3.Descriptor>>);
   @override
-  _i5.Future<_i3.DescriptorWithValue> readDescriptor(String? descriptorUuid,
-          {String? transactionId}) =>
+  _i5.Future<_i3.DescriptorWithValue> readDescriptor(
+    String? descriptorUuid, {
+    String? transactionId,
+  }) =>
       (super.noSuchMethod(
-              Invocation.method(#readDescriptor, [descriptorUuid],
-                  {#transactionId: transactionId}),
-              returnValue: Future.value(_FakeDescriptorWithValue()))
+            Invocation.method(
+              #readDescriptor,
+              [descriptorUuid],
+              {#transactionId: transactionId},
+            ),
+            returnValue: Future.value(_FakeDescriptorWithValue()),
+          )
           as _i5.Future<_i3.DescriptorWithValue>);
   @override
   _i5.Future<_i3.Descriptor> writeDescriptor(
-          String? descriptorUuid, _i2.Uint8List? value,
-          {String? transactionId}) =>
+    String? descriptorUuid,
+    _i2.Uint8List? value, {
+    String? transactionId,
+  }) =>
       (super.noSuchMethod(
-              Invocation.method(#writeDescriptor, [descriptorUuid, value],
-                  {#transactionId: transactionId}),
-              returnValue: Future.value(_FakeDescriptor()))
+            Invocation.method(
+              #writeDescriptor,
+              [descriptorUuid, value],
+              {#transactionId: transactionId},
+            ),
+            returnValue: Future.value(_FakeDescriptor()),
+          )
           as _i5.Future<_i3.Descriptor>);
   @override
   bool operator ==(Object? other) =>

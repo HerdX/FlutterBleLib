@@ -27,19 +27,20 @@ class BleError {
   final String? internalMessage;
 
   BleError.fromJson(Map<String, dynamic> json)
-      : errorCode = BleErrorCode(json[_BleErrorMetadata.errorCode] ?? 0),
-        attErrorCode = json[_BleErrorMetadata.attErrorCode],
-        iosErrorCode = json[_BleErrorMetadata.iosErrorCode],
-        androidErrorCode = json[_BleErrorMetadata.androidErrorCode],
-        reason = json[_BleErrorMetadata.reason] ?? "Reason not provided",
-        deviceID = json[_BleErrorMetadata.deviceId],
-        serviceUuid = json[_BleErrorMetadata.serviceUuid],
-        characteristicUuid = json[_BleErrorMetadata.characteristicUuid],
-        descriptorUuid = json[_BleErrorMetadata.descriptorUuid],
-        internalMessage = json[_BleErrorMetadata.internalMessage];
+    : errorCode = BleErrorCode(json[_BleErrorMetadata.errorCode] ?? 0),
+      attErrorCode = json[_BleErrorMetadata.attErrorCode],
+      iosErrorCode = json[_BleErrorMetadata.iosErrorCode],
+      androidErrorCode = json[_BleErrorMetadata.androidErrorCode],
+      reason = json[_BleErrorMetadata.reason] ?? "Reason not provided",
+      deviceID = json[_BleErrorMetadata.deviceId],
+      serviceUuid = json[_BleErrorMetadata.serviceUuid],
+      characteristicUuid = json[_BleErrorMetadata.characteristicUuid],
+      descriptorUuid = json[_BleErrorMetadata.descriptorUuid],
+      internalMessage = json[_BleErrorMetadata.internalMessage];
 
   @override
-  String toString() => "BleError ("
+  String toString() =>
+      "BleError ("
       "Error code: ${errorCode.value}, "
       "ATT error code: $attErrorCode, "
       "iOS error code: $iosErrorCode, "

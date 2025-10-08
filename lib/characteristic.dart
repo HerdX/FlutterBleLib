@@ -40,19 +40,21 @@ class Characteristic extends InternalCharacteristic {
   /// True if this characteristic can be monitored via indications.
   bool isIndicatable;
 
-  Characteristic.fromJson(Map<String, dynamic> jsonObject, Service service,
-      ManagerForCharacteristic manager)
-      : _manager = manager,
-        service = service,
-        uuid = jsonObject[_CharacteristicMetadata.uuid],
-        isReadable = jsonObject[_CharacteristicMetadata.isReadable],
-        isWritableWithResponse =
-            jsonObject[_CharacteristicMetadata.isWritableWithResponse],
-        isWritableWithoutResponse =
-            jsonObject[_CharacteristicMetadata.isWritableWithoutResponse],
-        isNotifiable = jsonObject[_CharacteristicMetadata.isNotifiable],
-        isIndicatable = jsonObject[_CharacteristicMetadata.isIndicatable],
-        super(jsonObject[_CharacteristicMetadata.id]);
+  Characteristic.fromJson(
+    Map<String, dynamic> jsonObject,
+    Service service,
+    ManagerForCharacteristic manager,
+  ) : _manager = manager,
+      service = service,
+      uuid = jsonObject[_CharacteristicMetadata.uuid],
+      isReadable = jsonObject[_CharacteristicMetadata.isReadable],
+      isWritableWithResponse =
+          jsonObject[_CharacteristicMetadata.isWritableWithResponse],
+      isWritableWithoutResponse =
+          jsonObject[_CharacteristicMetadata.isWritableWithoutResponse],
+      isNotifiable = jsonObject[_CharacteristicMetadata.isNotifiable],
+      isIndicatable = jsonObject[_CharacteristicMetadata.isIndicatable],
+      super(jsonObject[_CharacteristicMetadata.id]);
 
   /// Reads the value of this characteristic.
   ///
@@ -73,14 +75,13 @@ class Characteristic extends InternalCharacteristic {
     Uint8List value,
     bool withResponse, {
     String? transactionId,
-  }) =>
-      _manager.writeCharacteristicForIdentifier(
-        service.peripheral,
-        this,
-        value,
-        withResponse,
-        transactionId ?? TransactionIdGenerator.getNextId(),
-      );
+  }) => _manager.writeCharacteristicForIdentifier(
+    service.peripheral,
+    this,
+    value,
+    withResponse,
+    transactionId ?? TransactionIdGenerator.getNextId(),
+  );
 
   /// Returns a [Stream] of notifications/indications emitted by this
   /// characteristic.
@@ -105,25 +106,23 @@ class Characteristic extends InternalCharacteristic {
   Future<DescriptorWithValue> readDescriptor(
     String descriptorUuid, {
     String? transactionId,
-  }) =>
-      _manager.readDescriptorForCharacteristic(
-        this,
-        descriptorUuid,
-        transactionId ?? TransactionIdGenerator.getNextId(),
-      );
+  }) => _manager.readDescriptorForCharacteristic(
+    this,
+    descriptorUuid,
+    transactionId ?? TransactionIdGenerator.getNextId(),
+  );
 
   /// Writes the [value] of a [Descriptor] identified by [descriptorUuid].
   Future<Descriptor> writeDescriptor(
     String descriptorUuid,
     Uint8List value, {
     String? transactionId,
-  }) =>
-      _manager.writeDescriptorForCharacteristic(
-        this,
-        descriptorUuid,
-        value,
-        transactionId ?? TransactionIdGenerator.getNextId(),
-      );
+  }) => _manager.writeDescriptorForCharacteristic(
+    this,
+    descriptorUuid,
+    value,
+    transactionId ?? TransactionIdGenerator.getNextId(),
+  );
 
   @override
   bool operator ==(Object other) =>
