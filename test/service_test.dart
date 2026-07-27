@@ -20,7 +20,6 @@ import 'test_util/descriptor_generator.dart';
 ])
 void main() {
   final peripheral = MockPeripheral();
-  when(peripheral.toString()).thenReturn("mocked peripheral toString()");
   when(peripheral.identifier).thenReturn("mocked peripheral id");
   final managerForService = MockManagerForService();
   when(
