@@ -16,7 +16,8 @@ abstract class ManagerForPeripheral {
   Future<bool> isPeripheralConnected(String peripheralIdentifier);
 
   Future<void> disconnectOrCancelPeripheralConnection(
-      String peripheralIdentifier);
+    String peripheralIdentifier,
+  );
 
   Stream<PeripheralConnectionState> observePeripheralConnectionState(
     String peripheralIdentifier,
@@ -25,7 +26,9 @@ abstract class ManagerForPeripheral {
   );
 
   Future<void> discoverAllServicesAndCharacteristics(
-      Peripheral peripheral, String transactionId);
+    Peripheral peripheral,
+    String transactionId,
+  );
 
   Future<List<Service>> services(Peripheral peripheral);
 
@@ -34,16 +37,9 @@ abstract class ManagerForPeripheral {
     String serviceUuid,
   );
 
-  Future<int> rssi(
-    Peripheral peripheral,
-    String transactionId,
-  );
+  Future<int> rssi(Peripheral peripheral, String transactionId);
 
-  Future<int> requestMtu(
-    Peripheral peripheral,
-    int mtu,
-    String transactionId,
-  );
+  Future<int> requestMtu(Peripheral peripheral, int mtu, String transactionId);
 
   Future<CharacteristicWithValue> readCharacteristicForDevice(
     Peripheral peripheral,
@@ -53,12 +49,13 @@ abstract class ManagerForPeripheral {
   );
 
   Future<Characteristic> writeCharacteristicForDevice(
-      Peripheral peripheral,
-      String serviceUuid,
-      String characteristicUuid,
-      Uint8List value,
-      bool withResponse,
-      String transactionId);
+    Peripheral peripheral,
+    String serviceUuid,
+    String characteristicUuid,
+    Uint8List value,
+    bool withResponse,
+    String transactionId,
+  );
 
   Stream<CharacteristicWithValue> monitorCharacteristicForDevice(
     Peripheral peripheral,

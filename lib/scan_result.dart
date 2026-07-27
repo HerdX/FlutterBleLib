@@ -27,27 +27,26 @@ class ScanResult {
 
   /// A packet of data advertised by the peripheral.
   final AdvertisementData advertisementData;
-  
+
   ScanResult._(
-    this.peripheral, 
+    this.peripheral,
     this.rssi,
-    this.advertisementData,
-    {this.isConnectable, 
-    List<String>? overflowServiceUuids, 
+    this.advertisementData, {
+    this.isConnectable,
+    List<String>? overflowServiceUuids,
   }) : overflowServiceUuids = overflowServiceUuids ?? <String>[];
 
-
   factory ScanResult.fromJson(
-    Map<String, dynamic?> json, 
-    ManagerForPeripheral manager
+    Map<String, dynamic> json,
+    ManagerForPeripheral manager,
   ) {
     assert(json[_ScanResultMetadata.rssi] is int);
     return ScanResult._(
-      Peripheral.fromJson(json, manager), 
+      Peripheral.fromJson(json, manager),
       json[_ScanResultMetadata.rssi],
       AdvertisementData._fromJson(json),
       isConnectable: json[_ScanResultMetadata.isConnectable],
-      overflowServiceUuids: json[_ScanResultMetadata.overflowServiceUuids]
+      overflowServiceUuids: json[_ScanResultMetadata.overflowServiceUuids],
     );
   }
 }
@@ -75,24 +74,25 @@ class AdvertisementData {
   final List<String>? solicitedServiceUuids;
 
   AdvertisementData._fromJson(Map<String, dynamic> json)
-      : manufacturerData =
-            _decodeBase64OrNull(json[_ScanResultMetadata.manufacturerData]),
-        serviceData =
-            _getServiceDataOrNull(json[_ScanResultMetadata.serviceData]),
-        serviceUuids =
-            _mapToListOfStringsOrNull(json[_ScanResultMetadata.serviceUuids]),
-        localName = json[_ScanResultMetadata.localName],
-        txPowerLevel = json[_ScanResultMetadata.txPowerLevel],
-        solicitedServiceUuids =
-          _mapToListOfStringsOrNull(
-            json[_ScanResultMetadata.solicitedServiceUuids]
-          );
+    : manufacturerData = _decodeBase64OrNull(
+        json[_ScanResultMetadata.manufacturerData],
+      ),
+      serviceData = _getServiceDataOrNull(
+        json[_ScanResultMetadata.serviceData],
+      ),
+      serviceUuids = _mapToListOfStringsOrNull(
+        json[_ScanResultMetadata.serviceUuids],
+      ),
+      localName = json[_ScanResultMetadata.localName],
+      txPowerLevel = json[_ScanResultMetadata.txPowerLevel],
+      solicitedServiceUuids = _mapToListOfStringsOrNull(
+        json[_ScanResultMetadata.solicitedServiceUuids],
+      );
 
   static Map<String, Uint8List>? _getServiceDataOrNull(
-      Map<String, dynamic>? serviceData) {
-    return serviceData?.map(
-      (key, value) => MapEntry(key, base64Decode(value)),
-    );
+    Map<String, dynamic>? serviceData,
+  ) {
+    return serviceData?.map((key, value) => MapEntry(key, base64Decode(value)));
   }
 
   static Uint8List? _decodeBase64OrNull(String? base64Value) {

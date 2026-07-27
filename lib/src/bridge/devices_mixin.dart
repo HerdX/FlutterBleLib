@@ -2,24 +2,27 @@ part of _internal;
 
 mixin DevicesMixin on FlutterBLE {
   Future<List<Peripheral>> knownDevices(
-      List<String> peripheralIdentifiers) async {
+    List<String> peripheralIdentifiers,
+  ) async {
     return _methodChannel
         .invokeMethod(MethodName.knownDevices, <String, dynamic>{
-      ArgumentName.deviceIdentifiers: peripheralIdentifiers,
-    }).then((peripheralsJson) {
-      print("known devices json: $peripheralsJson");
-      return _parsePeripheralsJson(peripheralsJson);
-    });
+          ArgumentName.deviceIdentifiers: peripheralIdentifiers,
+        })
+        .then((peripheralsJson) {
+          print("known devices json: $peripheralsJson");
+          return _parsePeripheralsJson(peripheralsJson);
+        });
   }
 
   Future<List<Peripheral>> connectedDevices(List<String> serviceUuids) async {
     return _methodChannel
         .invokeMethod(MethodName.connectedDevices, <String, dynamic>{
-      ArgumentName.uuids: serviceUuids,
-    }).then((peripheralsJson) {
-      print("connected devices json: $peripheralsJson");
-      return _parsePeripheralsJson(peripheralsJson);
-    });
+          ArgumentName.uuids: serviceUuids,
+        })
+        .then((peripheralsJson) {
+          print("connected devices json: $peripheralsJson");
+          return _parsePeripheralsJson(peripheralsJson);
+        });
   }
 
   List<Peripheral> _parsePeripheralsJson(String peripheralsJson) {

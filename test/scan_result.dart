@@ -9,16 +9,21 @@ void main() {
     void testManufacturerDataDeserialization(Uint8List manufacturerData) {
       test("$manufacturerData is deserialized correctly", () {
         //given
-        String serializedScanResult =
-            _createJsonScanResult(manufacturerData: manufacturerData);
+        String serializedScanResult = _createJsonScanResult(
+          manufacturerData: manufacturerData,
+        );
 
         //when
-        ScanResult scanResult =
-            ScanResult.fromJson(jsonDecode(serializedScanResult), null);
+        ScanResult scanResult = ScanResult.fromJson(
+          jsonDecode(serializedScanResult),
+          null,
+        );
 
         //then
-        expect(scanResult.advertisementData.manufacturerData,
-            equals(manufacturerData));
+        expect(
+          scanResult.advertisementData.manufacturerData,
+          equals(manufacturerData),
+        );
       });
     }
 
@@ -31,12 +36,15 @@ void main() {
     void testServiceDataDeserialization(Map<String, Uint8List> serviceData) {
       test("$serviceData is deserialized correctly", () {
         //given
-        String serializedScanResult =
-            _createJsonScanResult(serviceData: serviceData);
+        String serializedScanResult = _createJsonScanResult(
+          serviceData: serviceData,
+        );
 
         //when
-        ScanResult scanResult =
-            ScanResult.fromJson(jsonDecode(serializedScanResult), null);
+        ScanResult scanResult = ScanResult.fromJson(
+          jsonDecode(serializedScanResult),
+          null,
+        );
 
         //then
         expect(scanResult.advertisementData.serviceData, equals(serviceData));
